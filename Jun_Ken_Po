@@ -1,0 +1,56 @@
+    
+
+package com.mycompany.pedrapapeltesoura;
+import java.util.Random;
+import java.util.Scanner;
+/**
+ *
+ * @Lucas Lourenço
+ */
+public class PedraPapelTesoura {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        
+        String [] jogadas = {"Pedra", "Papel", "Tesoura"};
+    
+        System.out.println("Welcome to Jun Ken Po!");
+        
+        while (true){
+            System.out.println("Select your Play: 1 = PEDRA, 2 = PAPEL, 3 = TESOURA;");
+            int escolhaJogador = scanner.nextInt();
+            
+            if (escolhaJogador < 1 || escolhaJogador > 3){
+                System.out.println("Error. Try again!");
+                continue;
+            } 
+            String jogadaJogador = jogadas[escolhaJogador - 1];
+            System.out.println("You select " + jogadaJogador +".");
+            
+            int escolhaComputador = random.nextInt(3) + 1;
+            String jogadaComputador = jogadas[escolhaComputador - 1];
+            System.out.println("The computer select " + jogadaComputador + ".");
+            
+            if (jogadaJogador.equals(jogadaComputador)){
+                System.out.println("Draw!");
+                continue;
+            }
+            else if ((jogadaJogador.equals("Pedra") && jogadaComputador.equals("Tesoura")) || 
+                     (jogadaJogador.equals("Tesoura") && jogadaComputador.equals("Papel"))||
+                     (jogadaJogador.equals("Papel") && jogadaComputador.equals("Pedra"))){
+                System.out.println("Winner!");  
+            }else{
+                System.out.println("Lose it!");
+                }
+
+                    
+            System.out.println("Try again?");
+            String resposta = scanner.next();
+            if (resposta.equalsIgnoreCase("n")){
+                break;
+            }
+        }
+        System.out.println("Thank you for playing!");
+    }
+}
